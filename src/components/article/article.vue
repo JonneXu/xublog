@@ -3,8 +3,9 @@
 		<div class="article-line">
 			<ul>
 				<li class="article-li" v-for="item in articles">
-				<span>{{item.title}}</span>
-				<span>{{item.content}}</span>
+				<router-link :to="'/artDetail/'+item.id"  :artDetail= "item" class="article-title" >{{item.title}}</router-link>
+          <span class="article-time">{{item.Uptime}}</span>
+				<span class="article-content">{{item.content}}</span>
 				</li>
 			</ul>
 		</div>
@@ -15,10 +16,11 @@
 </template>
 
 <script >
+import artDetail from '../article-detail/article-detail'
 export default{
   data () {
     return {
-      articles: []
+      article: []
     }
   },
   created () {
@@ -26,6 +28,9 @@ export default{
       this.articles = response.body.data
     }, response => {
     })
+  },
+  components: {
+    artDetail
   }
 }
 </script>
@@ -34,15 +39,41 @@ export default{
 .article{
 	display: flex;
 	width: 100%;
+  background-color: #EEEDB0;
 }
 .article-line{
  order: 0;
  width: 80%;
 }
 .article-li{
-	display: block;
-	height: 130px;
-	border: 3px solid #9BD7C1;
+	display: flex;
+  flex-direction: column;
+	height: 117px;
+  border-style:none solid solid solid;
+	border-width:1px;
+  border-color: #B8B891;
+}
+.article-title{
+  order:1;
+  min-height: 36px;
+  line-height: 36px;
+  font-size:22px;
+  white-space:nowrap;
+  overflow: hidden;
+  padding-left:5px;
+}
+.article-time{
+  font-size: 12px;
+  line-height:12px;
+  height:12px;
+  order:2;
+  padding-left:20px;
+}
+.article-content{
+  order:3;
+  overflow: hidden;
+  line-height:23px;
+  padding-left: 5px;
 }
 .article-hot{
 	order: 1;

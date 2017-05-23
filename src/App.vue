@@ -4,7 +4,7 @@
     <div class="content">
         <div class="tab">
         <div class="tab-item">
-    	  <router-link to='/mypage'>主页</router-link>
+    	  <router-link to='/mypage' actived>主页</router-link>
         </div>
         <div class="tab-item">
         	<router-link to='/article'>文章</router-link>
@@ -18,15 +18,18 @@
         </div>
         <router-view></router-view>
     </div>
+    <v-footer class="v-footer"></v-footer>
   </div>
 </template>
 
 <script>
 import header from './components/header/header'
+import footer from './components/footer/footer'
 
 export default {
   components: {
-    'v-header': header
+    'v-header': header,
+    'v-footer': footer
   }
 }
 </script>
@@ -36,34 +39,35 @@ export default {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    height: 100%;
-    position: relative;
 }
 .v-header{
-    position: absolute;
     height: 100px;
-    width: 100%
+    width: 100%;
 }
 .content{
-    position: absolute;
-    margin-top: 100px;
-    height: 90%;
     width: 100%;
-    display: flex; 
+    min-height:668px;
+    flex:1;
+    display: flex;
 }
 .tab{
     order: -1;
-    height: 100%;
+  min-height:100%;
     width: 130px;
     background-color: #EEEDB0;
+    flex-shrink: 0;
 }
 .tab-item{
     line-height: 60px;
-    text-align: center; 
+    text-align: center;
     border-bottom:1px solid #B8B891;
 }
 .tab-item a{
     display: block;
+}
+.v-footer{
+  height:15px;
+  flex:1;
 }
 </style>
 
