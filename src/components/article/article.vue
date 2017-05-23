@@ -20,7 +20,7 @@ import artDetail from '../article-detail/article-detail'
 export default{
   data () {
     return {
-      article: []
+      articles: []
     }
   },
   created () {

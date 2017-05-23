@@ -5,7 +5,6 @@
 </template>
 
 <script>
- // var artindex=;
   export default{
     data () {
       return {
