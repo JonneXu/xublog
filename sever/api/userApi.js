@@ -17,9 +17,6 @@ var jsonWrite = function (res, ret) {
     res.json(ret)
   }
 }
-
-
-
 //文章接口
 router.post('/articles/input', (req, res) => {
   var sql = $sql.user.addart
@@ -51,12 +48,26 @@ router.get('/articles/show', (req, res) => {
     }
   })
 })
-
-//apiRoutes.get('/articles',function(req,res){
-//  res.json({
-//    errno:0,
-//    data:articles
-//  })
+//router.param('id', function (req, res, next, id) {
+//  console.log('print id1 ' + id)
+//  next()
 //})
+router.get('/artDetail/:id', (req, res) => {
+  var sql = $sql.user.artdetail
+  var id = req.params.id
+  console.log(id)
+  conn.query(sql, [id], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      res.json({
+        error: 0,
+        data: result
+      })
+      console.log(result)
+    }
+  })
+})
 module.exports = router
 

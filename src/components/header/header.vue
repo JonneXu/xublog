@@ -3,17 +3,17 @@
 	    <div class="header-left">
 		<img class="mypic"  src="../../common/src/girl.jpg" border="1" />
 		<div class="welcome">
-			welcome to my blog!
+			welcome!
 		</div>
 		</div>
 	</div>
 </template>
 
 <script >
-	
+
 </script>
 export default{
-	
+
 }
 <style >
 .header{
@@ -32,10 +32,11 @@ export default{
 .welcome{
 	position: relative;
 	float: left;
-	height: 100%;
-	line-height:100%;
-	padding: 40px 10px;
+	height: 40px;
+	line-height:40px;
+  margin-top:30px;
 	font-weight: 500;
+  font-size:40px;
 	font-family:"Times New Roman",Georgia,Serif;
 }
 </style>

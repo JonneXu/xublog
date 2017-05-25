@@ -1,6 +1,0 @@
-%  = MMZOOM 返回创建的放大坐标系和方法框的句柄
-% MMZOOM DRAG 使能放大框的拖放功能
-% MMZOOM RESET 取消放大框的拖放功能
-% MMZOOM OFF 删除放大框
-% 常用用法：画好图片后输入mmzoom，圈图片放大，可以拖动放大框到理想位置，点击figure的非主坐标
-% 系区域确定;还想拖动，输入mmzoom

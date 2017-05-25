@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style>
+  @import './common/css/reset.css';
 #app{
     display: flex;
     min-height: 100vh;
@@ -47,7 +48,6 @@ export default {
 .content{
     width: 100%;
     min-height:668px;
-    flex:1;
     display: flex;
 }
 .tab{

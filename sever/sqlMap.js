@@ -3,7 +3,8 @@ var sqlMap = {
   user: {
    // add: 'insert into user(id, name, age) values (0, ?, ?)',
     addart: 'insert into articles(id, title, content) values (0, ?, ?)',
-    showart: 'select *from articles'
+    showart: 'select *from articles',
+    artdetail: 'select *from articles where id=?'
   }
 }
 

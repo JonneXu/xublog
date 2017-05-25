@@ -12,7 +12,7 @@ const routes = [
   {path: '/article', component: article},
   {path: '/chatting', component: chatting},
   {path: '/about', component: about},
-  {path: '/artDetail/:id', name: 'artdetail', component: artDetail}
+  {path: '/artDetail/:id', name: 'artDetail', component: artDetail}
 ]
 export default routes
 

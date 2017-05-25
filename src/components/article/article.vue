@@ -39,7 +39,6 @@ export default{
 .article{
 	display: flex;
 	width: 100%;
-  background-color: #EEEDB0;
 }
 .article-line{
  order: 0;
