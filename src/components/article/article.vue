@@ -4,7 +4,7 @@
 			<ul>
 				<li class="article-li" v-for="item in articles">
 				<router-link :to="'/artDetail/'+item.id"  :artDetail= "item" class="article-title" >{{item.title}}</router-link>
-          <span class="article-time">{{item.Uptime}}</span>
+          <span class="article-time">{{item.id}}</span>
 				<span class="article-content">{{item.content}}</span>
 				</li>
 			</ul>
@@ -24,7 +24,7 @@ export default{
     }
   },
   created () {
-    this.$http.get('/api/articles').then(response => {
+    this.$http.get('/api/articles/show').then(response => {
       this.articles = response.body.data
     }, response => {
     })

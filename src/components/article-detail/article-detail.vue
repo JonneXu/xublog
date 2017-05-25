@@ -1,6 +1,6 @@
 <template>
   <div class="article-detail">
-    {{$route.params.title}}
+    {{$route.params.id}}
   </div>
 </template>
 
@@ -8,7 +8,7 @@
   export default{
     data () {
       return {
-        article: []
+        articles: []
       }
     },
     created () {
