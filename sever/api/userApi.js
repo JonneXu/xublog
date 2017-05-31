@@ -19,10 +19,9 @@ var jsonWrite = function (res, ret) {
 }
 //文章接口
 router.post('/articles/input', (req, res) => {
-  var sql = $sql.user.addart
+  var sql = $sql.user.addArt
   var params = req.body
-  console.log(params)
-  conn.query(sql, [params.title, params.content], function (err, result) {
+  conn.query(sql, [params.title, params.content, params.addTime], function (err, result) {
     if (err) {
       console.log(err)
     }
@@ -33,8 +32,7 @@ router.post('/articles/input', (req, res) => {
 })
 
 router.get('/articles/show', (req, res) => {
-  var sql = $sql.user.showart
- // var params = res.body
+  var sql = $sql.user.showArt
   conn.query(sql, [], function (err, result) {
     if (err) {
       console.log(err)
@@ -44,18 +42,13 @@ router.get('/articles/show', (req, res) => {
         error: 0,
         data: result
       })
-      console.log(result)
     }
   })
 })
-//router.param('id', function (req, res, next, id) {
-//  console.log('print id1 ' + id)
-//  next()
-//})
+
 router.get('/artDetail/:id', (req, res) => {
-  var sql = $sql.user.artdetail
+  var sql = $sql.user.artDetail
   var id = req.params.id
-  console.log(id)
   conn.query(sql, [id], function (err, result) {
     if (err) {
       console.log(err)
@@ -65,7 +58,54 @@ router.get('/artDetail/:id', (req, res) => {
         error: 0,
         data: result
       })
-      console.log(result)
+    }
+  })
+})
+
+router.post('/artDel/:id', (req) => {
+  var sql = $sql.user.delArt
+  var id = req.params.id
+  conn.query(sql, [id], function (err) {
+    if (err) {
+      console.log(err)
+    }
+  })
+})
+
+router.post('/log/logUp', (req, res) => {
+  var sql = $sql.log.logUp
+  var logCheck = $sql.log.logCheck
+  var params = req.body.userData
+  conn.query(logCheck, [params.username], function (err, check) {
+    if (err) {
+      console.log(err)
+    }
+    if (check[0]) {
+      res.json({
+        ale: '用户名已存在'
+      })
+    } else {
+      conn.query(sql, [params.username, params.password], function (err, result) {
+        if (err) {
+          console.log(err)
+        }
+        if (result) {
+          jsonWrite(res, result)
+        }
+      })
+    }
+  })
+})
+
+router.post('/log/logIn', (req, res) => {
+  var sql = $sql.log.logCheck
+  var params = req.body.userData
+  conn.query(sql, [params.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
     }
   })
 })

@@ -1,11 +1,19 @@
 <template>
   <div class="article-detail">
-    <router-link to="/article" class="return-btn">返回</router-link>
+    <div class="detail-main">
+      <router-link to="/article" class="return-btn btn">返回</router-link>
     <div class="detail-title">
       {{article.title}}
     </div>
+    <div class="detail-time">
+      {{article.time}}
+    </div>
     <div class="detail-content">
       {{article.content}}
+    </div>
+    </div>
+    <div class="detail-commit">
+      pinglunqu
     </div>
   </div>
 </template>
@@ -34,21 +42,33 @@
     width:100%;
     height:100%;
   }
+  .detail-main{
+    width:80%;
+    border:1px solid #B8B891;
+    margin:10px auto;
+  }
   .return-btn{
     order: 0;
-    padding-right:30px;
     display: block;
-    font-size:30px;
-    width:80px;
-    height:50px;
-    line-height:50px;
+    font-size:20px;
+    width:40px;
   }
   .detail-title{
     order:1;
     height:40px;
+    line-height:40px;
     font-size:20px;
+    text-align: center;
+  }
+  .detail-time{
+    order:2;
+    text-align: center;
+    padding-left:60px;
   }
   .detail-content{
-    order:2;
+    order:3;
+    font-size:14px;
+    line-height:18px;
+    padding:20px;
   }
 </style>

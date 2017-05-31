@@ -3,24 +3,30 @@
 		<div class="article-line">
 			<ul>
 				<li class="article-li" v-for="item in articles">
-				<router-link :to="'/artDetail/'+item.id"  :artDetail= "item" class="article-title" >{{item.title}}</router-link>
-          <span class="article-time">{{item.id}}</span>
+				<router-link :to="'/artDetail/'+item.id" class="article-title" >{{item.title}}</router-link>
+          <span class="article-time">
+            {{item.time}}
+            <a  v-show="(this.username == xujingyao)"   class="article-delete btn" href="javascript:;" @click="deleteArt(item.id)" >删除{{username}}</a>
+          </span>
 				<span class="article-content">{{item.content}}</span>
 				</li>
 			</ul>
 		</div>
-		<div class="article-hot">
-			我是热评
+		<div class="article-addition">
+      <router-link to="/addArticle" class="article-add">
+        添加文章
+      </router-link>
 		</div>
 	</div>
 </template>
 
 <script >
-import artDetail from '../article-detail/article-detail'
+  import { bus } from '../bus.js'
 export default{
   data () {
     return {
-      articles: []
+      articles: [],
+      username: ''
     }
   },
   created () {
@@ -28,15 +34,31 @@ export default{
       this.articles = response.body.data
     }, response => {
     })
+    var that = this
+    bus.$on('id-selected',function (data) {
+      that.username = data[1]
+    })
   },
-  components: {
-    artDetail
+  methods: {
+      deleteArt(delId){
+        if (confirm('确定删除吗?')){
+          this.$http.post('/api/artDel/' + delId).then(response => {
+          }, response => {
+          })
+          this.$http.get('/api/articles/show').then(response => {
+            this.articles = response.body.data
+          }, response => {
+          })
+          alert('删除成功！')
+        }
+      }
   }
 }
 </script>
 
 <style >
 .article{
+  margin-left:20px;
 	display: flex;
 	width: 100%;
 }
@@ -47,10 +69,14 @@ export default{
 .article-li{
 	display: flex;
   flex-direction: column;
-	height: 117px;
-  border-style:none solid solid solid;
-	border-width:1px;
-  border-color: #B8B891;
+	height: 180px;
+  margin:15px 10px;
+  padding: 10px;
+  border: 1px solid #B8B891;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 3px #888888;
 }
 .article-title{
   order:1;
@@ -59,23 +85,39 @@ export default{
   font-size:22px;
   white-space:nowrap;
   overflow: hidden;
-  padding-left:5px;
+  padding-left:15px;
+  font-family:STHeiti;
 }
 .article-time{
   font-size: 12px;
   line-height:12px;
   height:12px;
   order:2;
-  padding-left:20px;
+  padding:0 0 0 30px;
 }
 .article-content{
   order:3;
   overflow: hidden;
   line-height:23px;
-  padding-left: 5px;
+  padding: 0 15px 5px 15px ;
 }
-.article-hot{
+.article-delete{
+  margin-left:30px;
+}
+.article-addition{
 	order: 1;
+  display: flex;
+  flex-direction:column;
 	width: 20%;
+  height:100%;
+  margin:5px;
+  border:1px solid #B8B891;
+  border-radius: 5px;
+}
+.article-add{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-bottom: 1px solid  #B8B891;
 }
 </style>

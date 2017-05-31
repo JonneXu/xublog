@@ -4,7 +4,7 @@
     <div class="content">
         <div class="tab">
         <div class="tab-item">
-    	  <router-link to='/mypage' actived>主页</router-link>
+    	  <router-link to='/mypage' >主页</router-link>
         </div>
         <div class="tab-item">
         	<router-link to='/article'>文章</router-link>
@@ -25,11 +25,17 @@
 <script>
 import header from './components/header/header'
 import footer from './components/footer/footer'
+import signIn from './components/signIn/signIn'
+import signUp from './components/signUp/signUp'
+import article from './components/article/article'
 
 export default {
   components: {
     'v-header': header,
-    'v-footer': footer
+    'v-footer': footer,
+    signIn,
+    signUp,
+    article
   }
 }
 </script>
@@ -40,30 +46,40 @@ export default {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family:"Times New Roman",Georgia,Serif;
 }
 .v-header{
-    height: 100px;
+    height: 70px;
     width: 100%;
 }
 .content{
+  background-color: #EEEEEE;
     width: 100%;
     min-height:668px;
     display: flex;
 }
 .tab{
-    order: -1;
   min-height:100%;
     width: 130px;
-    background-color: #EEEDB0;
     flex-shrink: 0;
 }
 .tab-item{
     line-height: 60px;
     text-align: center;
-    border-bottom:1px solid #B8B891;
-}
-.tab-item a{
     display: block;
+    font-size: 20px;
+    border-style: solid solid solid none;
+    border-width: 1px;
+    border-color: #B8B891;
+    margin: 2px 2px 2px 0;
+    border-radius: 0 3px 3px 0;
+}
+.tab-item:hover{
+  background-color: #B3B3B3;
+}
+.router-link-active {
+  color: #919191;
+  text-decoration: underline;
 }
 .v-footer{
   height:15px;

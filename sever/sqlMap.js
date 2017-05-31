@@ -2,9 +2,14 @@ var sqlMap = {
   // 用户
   user: {
    // add: 'insert into user(id, name, age) values (0, ?, ?)',
-    addart: 'insert into articles(id, title, content) values (0, ?, ?)',
-    showart: 'select *from articles',
-    artdetail: 'select *from articles where id=?'
+    addArt: 'INSERT INTO ARTICLES(ID, TITLE, CONTENT, TIME) VALUES (0, ?, ?, ?)',
+    showArt: 'SELECT *FROM ARTICLES',
+    artDetail: 'SELECT *FROM ARTICLES WHERE ID=?',
+    delArt: 'DELETE FROM ARTICLES WHERE ID=?'
+  },
+  log: {
+    logUp: 'INSERT INTO USERS(ID, NAME, PASSWORD) VALUES (0, ?, ?)',
+    logCheck: 'SELECT *FROM USERS WHERE NAME=?'
   }
 }
 
