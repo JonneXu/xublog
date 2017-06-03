@@ -25,7 +25,6 @@
         }
     },
     created() {
-        alert(this)
          that = this
         bus.$on('id-selected',function (data) {
           that.logU = data[0]

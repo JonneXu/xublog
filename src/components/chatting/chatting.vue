@@ -1,6 +1,6 @@
 <template>
 	<div>
-		{{username}}hello
+		{{username}}敬请期待
 	</div>
 </template>
 
@@ -9,13 +9,12 @@
 	export default{
 	    data(){
 	        return {
-	            username: '没进来！！！'
+	            username: ''
           }
       },
     created() {
-	      let  chatThis =this
-      bus.$on('id-selected',function (data) {
-        chatThis.username = data[1]
+      bus.$on('id-selected',(data) => {
+        this.username = data[1]
       })
     }
   }

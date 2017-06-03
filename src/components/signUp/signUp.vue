@@ -66,7 +66,7 @@
                 else {
                   alert('注册成功')
                   bus.$emit('id-selected',[true,this.form.username,false])
-                 this.$router.go('/mypage')
+                 this.$router.replace('/mypage')
                 }
             },response =>{})
         }
