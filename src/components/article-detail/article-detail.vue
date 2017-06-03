@@ -1,7 +1,10 @@
 <template>
   <div class="article-detail">
     <div class="detail-main">
-      <router-link to="/article" class="return-btn btn">返回</router-link>
+      <div class="return-btn">
+      <i class="arrLeft"></i>
+      <router-link to="/article" class="returnText">返回</router-link>
+      </div>
     <div class="detail-title">
       {{article.title}}
     </div>
@@ -11,9 +14,6 @@
     <div class="detail-content">
       {{article.content}}
     </div>
-    </div>
-    <div class="detail-commit">
-      pinglunqu
     </div>
   </div>
 </template>
@@ -44,14 +44,34 @@
   }
   .detail-main{
     width:80%;
-    border:1px solid #B8B891;
+    border:2px solid #B8B891;
+    border-radius: 12px;
     margin:10px auto;
   }
   .return-btn{
-    order: 0;
+       margin: 20px 10px;
+       order: 0;
+       height: 22px;
+       width:48px;
+    font-size: 0;
+    display: flex;
+     }
+  .arrLeft{
+    height: 0;
+    width: 0;
+    index: 0;
+    border-right:11px solid #B8B891;
+    border-top: 11px solid  transparent;
+    border-bottom:11px solid transparent;
+  }
+
+  .returnText{
     display: block;
-    font-size:20px;
-    width:40px;
+    font-size: 14px;
+    line-height:18px;
+    border: 1px solid #B8B891;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px #888888;
   }
   .detail-title{
     order:1;

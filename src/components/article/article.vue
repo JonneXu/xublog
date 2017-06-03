@@ -6,7 +6,7 @@
 				<router-link :to="'/artDetail/'+item.id" class="article-title" >{{item.title}}</router-link>
           <span class="article-time">
             {{item.time}}
-            <a  v-show="(this.username == xujingyao)"   class="article-delete btn" href="javascript:;" @click="deleteArt(item.id)" >删除{{username}}</a>
+            <a  v-show="isShow"   class="article-delete btn" href="javascript:;" @click="deleteArt(item.id)" >删除{{username}}</a>
           </span>
 				<span class="article-content">{{item.content}}</span>
 				</li>
@@ -22,22 +22,25 @@
 
 <script >
   import { bus } from '../bus.js'
+  var that = this
 export default{
   data () {
     return {
       articles: [],
-      username: ''
+      username: '',
+      isShow: false
     }
   },
   created () {
+      that = this
     this.$http.get('/api/articles/show').then(response => {
       this.articles = response.body.data
     }, response => {
     })
-    var that = this
     bus.$on('id-selected',function (data) {
-      that.username = data[1]
-    })
+      this.username = data[1]
+      this.isShow = data[2]
+    }.bind(that))
   },
   methods: {
       deleteArt(delId){
@@ -69,6 +72,7 @@ export default{
 .article-li{
 	display: flex;
   flex-direction: column;
+  background-color: #F7F7F7;
 	height: 180px;
   margin:15px 10px;
   padding: 10px;

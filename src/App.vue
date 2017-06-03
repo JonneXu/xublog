@@ -28,6 +28,7 @@ import footer from './components/footer/footer'
 import signIn from './components/signIn/signIn'
 import signUp from './components/signUp/signUp'
 import article from './components/article/article'
+import chatting from './components/chatting/chatting'
 
 export default {
   components: {
@@ -35,7 +36,8 @@ export default {
     'v-footer': footer,
     signIn,
     signUp,
-    article
+    article,
+    chatting
   }
 }
 </script>
@@ -53,10 +55,11 @@ export default {
     width: 100%;
 }
 .content{
-  background-color: #EEEEEE;
     width: 100%;
-    min-height:668px;
+    min-height:600px;
     display: flex;
+  background-image: url(common/src/back.jpeg);
+  opacity: 0.9;
 }
 .tab{
   min-height:100%;
@@ -75,7 +78,7 @@ export default {
     border-radius: 0 3px 3px 0;
 }
 .tab-item:hover{
-  background-color: #B3B3B3;
+  background-color: #E6E6E6;
 }
 .router-link-active {
   color: #919191;

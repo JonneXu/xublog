@@ -26,7 +26,8 @@
               form:{
                   username: '',
                   password: ''
-              }
+              },
+              adminName: false
           }
       },
     methods:{
@@ -41,8 +42,10 @@
               alert('密码错误！')
             return
           }else{
-              alert('登录成功')
-              bus.$emit('id-selected',[true, this.form.username])
+            if(this.form.username == 'xjy'){
+                this.adminName =true
+            }
+              bus.$emit('id-selected',[true, this.form.username, this.adminName])
               this.$router.replace('/mypage')
           }
         },response =>{})
